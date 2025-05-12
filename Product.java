@@ -12,4 +12,21 @@ public class Product {
         this.price = price;
         this.lowStock = lowStock;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
 }
