@@ -29,11 +29,15 @@ public class Product {
         return price;
     }
 
+    public int getLowStock() {
+        return lowStock;
+    }
+
     public void restock(int amount) {
         if (amount >= 0) {
             quantity += amount;
         } else {
-            System.out.println("Invalid restock amount: must be postive");
+            System.out.println("Invalid restock amount: must be positive");
         }
     }
 
