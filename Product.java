@@ -2,10 +2,10 @@ public class Product {
     private int id;
     private String name;
     private int quantity;
-    private int price;
+    private double price;
     private int lowStock;
 
-    public Product(int id, String name, int quantity, int price, int lowStock) {
+    public Product(int id, String name, int quantity, double price, int lowStock) {
         this.id = id;
         this.name = name;
         this.quantity = quantity;
@@ -25,8 +25,20 @@ public class Product {
         return quantity;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
+    }
+
+    public void restock(int amount) {
+        if (amount >= 0) {
+            quantity += amount;
+        } else {
+            System.out.println("Invalid restock amount: must be postive");
+        }
+    }
+
+    public boolean isLowStock() {
+        return quantity <= lowStock;
     }
 
 }
