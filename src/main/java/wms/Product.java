@@ -1,4 +1,4 @@
-package src.main.java;
+package wms;
 
 public class Product {
     private int id;
