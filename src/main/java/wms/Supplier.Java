@@ -12,6 +12,6 @@ public class Supplier {
         this.id = id;
         this.name = name;
         this.contactInfo = contactInfo;
-        ArrayList<PurchaseOrder> orderHistory = new ArrayList<>();
+        this.orderHistory = new ArrayList<>();
     }
 }
