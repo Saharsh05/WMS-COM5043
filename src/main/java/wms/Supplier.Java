@@ -14,4 +14,28 @@ public class Supplier {
         this.contactInfo = contactInfo;
         this.orderHistory = new ArrayList<>();
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getContactInfo() {
+        return contactInfo;
+    }
+
+    public ArrayList<PurchaseOrder> getOrderHistory() {
+        return orderHistory;
+    }
+
+    public void addOrder(PurchaseOrder order) {
+
+        if (order != null) {
+            orderHistory.add(order);
+        }
+
+    }
 }
