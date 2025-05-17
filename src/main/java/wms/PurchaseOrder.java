@@ -41,7 +41,7 @@ public class PurchaseOrder {
         this.status = newStatus;
     }
 
-    public int totalPrice() {
+    public double totalPrice() {
         return quantity * product.getPrice();
     }
 }
