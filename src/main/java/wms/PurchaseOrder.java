@@ -36,4 +36,12 @@ public class PurchaseOrder {
     public String getStatus() {
         return status;
     }
+
+    public void setStatus(String newStatus) {
+        this.status = newStatus;
+    }
+
+    public int totalPrice() {
+        return quantity * product.getPrice();
+    }
 }
