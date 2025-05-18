@@ -16,6 +16,10 @@ public class CustomerOrder {
         return id;
     }
 
+    public ArrayList<Product> getItems() {
+        return products;
+    }
+
     public ArrayList<Product> getProducts() {
         return products;
     }
@@ -27,5 +31,20 @@ public class CustomerOrder {
         } else {
             System.out.println("Enter an actual product");
         }
+    }
+
+    public double calculateTotal() {
+        double total = 0.0;
+
+        for (Product p : products) {
+
+            total += p.getPrice();
+        }
+
+        return total;
+    }
+
+    public double getTotalPrice() {
+        return calculateTotal();
     }
 }
