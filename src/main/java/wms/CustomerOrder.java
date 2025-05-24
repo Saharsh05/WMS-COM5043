@@ -1,17 +1,21 @@
 package wms;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.time.LocalDateTime;
 
 // this class represents a customers order. it handles the data logic of what the customer buys. 
 public class CustomerOrder {
     private int id;
-    private ArrayList<Product> products;
+    // private ArrayList<Product> products;
+    private Map<Product, Integer> items;
     private LocalDateTime createdAt;
 
     public CustomerOrder(int id) {
         this.id = id;
-        this.products = new ArrayList<>();
+        // this.products = new ArrayList<>();
+        this.items = new HashMap<>();
         this.createdAt = LocalDateTime.now();
     }
 
@@ -23,29 +27,28 @@ public class CustomerOrder {
         return createdAt;
     }
 
-    public ArrayList<Product> getItems() {
-        return products;
+    public Map<Product, Integer> getItems() {
+        return items;
     }
 
-    public ArrayList<Product> getProducts() {
-        return products;
-    }
-
-    public void addProduct(Product product) {
-        if (product != null) {
-            products.add(product);
+    public void addProduct(Product product, int quantity) {
+        if (product == null || quantity <= 0) {
+            System.out.println("Invalid product or quantity");
 
         } else {
-            System.out.println("Enter an actual product");
+            items.put(product, items.getOrDefault(product, 0) + quantity);
         }
     }
 
     public double calculateTotal() {
         double total = 0.0;
 
-        for (Product p : products) {
+        for (Map.Entry<Product, Integer> entry : items.entrySet()) {
 
-            total += p.getPrice();
+            Product p = entry.getKey();
+            int quantity = entry.getValue();
+
+            total += p.getPrice() * quantity;
         }
 
         return total;
