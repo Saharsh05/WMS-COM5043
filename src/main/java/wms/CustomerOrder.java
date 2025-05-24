@@ -3,28 +3,14 @@ package wms;
 //import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.time.LocalDateTime;
 
 // this class represents a customers order. it handles the data logic of what the customer buys. 
-public class CustomerOrder {
-    private int id;
-    // private ArrayList<Product> products;
+public class CustomerOrder extends Order {
     private Map<Product, Integer> items;
-    private LocalDateTime createdAt;
 
     public CustomerOrder(int id) {
-        this.id = id;
-        // this.products = new ArrayList<>();
+        super(id);
         this.items = new HashMap<>();
-        this.createdAt = LocalDateTime.now();
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
     }
 
     public Map<Product, Integer> getItems() {
@@ -40,6 +26,7 @@ public class CustomerOrder {
         }
     }
 
+    @Override
     public double calculateTotal() {
         double total = 0.0;
 
