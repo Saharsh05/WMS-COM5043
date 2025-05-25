@@ -49,28 +49,37 @@ public class WarehouseManager {
     }
 
     public void createPurchaseOrder(int orderId, Supplier supplier, Product product, int quantity) {
-        if (supplier == null || quantity <= 0) {
-            System.out.println("One of supplier or quantity is incorrect");
+        if (supplier == null || product == null || quantity <= 0) {
+            System.out.println("Invalid input: supplier/ product is null or quantity is invalid");
             return;
         }
 
+        boolean supplierExists = false;
         for (Supplier s : suppliers) {
-            if (s.getName().equals(supplier.getName())) {
-                System.out.println("The supplier already exsits");
-                return;
+            if (s.getId() == supplier.getId()) {
+                supplierExists = true;
+                break;
             }
         }
+        if (!supplierExists) {
+            System.out.println("Supplier not found in the system");
+            return;
+        }
 
+        boolean productExists = false;
         for (Product p : products) {
-            if (p.getName().equals(product.getName())) {
-                System.out.println("This product already exists");
-                return;
+            if (p.getId() == product.getId()) {
+                productExists = true;
+                break;
             }
+        }
+        if (!productExists) {
+            System.out.println("Product not found in the system");
+            return;
         }
 
         PurchaseOrder po = new PurchaseOrder(orderId, supplier, product, quantity);
         purchases.add(po);
-
         supplier.addOrder(po);
 
         System.out.println("Purchase order created successfully");
