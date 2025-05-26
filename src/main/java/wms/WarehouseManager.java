@@ -97,6 +97,17 @@ public class WarehouseManager {
 
     }
 
+    public List<CustomerOrder> getCustomerOrder() {
+        return customerOrders;
+    }
+
+    public void addCustomerOrder(CustomerOrder order) {
+        if (order != null) {
+            customerOrders.add(order);
+            System.out.println("Customer order added to system.");
+        }
+    }
+
     public void receivePurchaseOrder(int orderId) {
 
         boolean orderFound = false;

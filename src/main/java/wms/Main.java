@@ -106,7 +106,63 @@ public class Main {
 
                 case 5:
 
+                    System.out.println("Enter customer order ID");
+                    int coID = scanner.nextInt();
+                    scanner.nextLine();
+
+                    CustomerOrder co = new CustomerOrder(coID);
+
+                    boolean addingItems = true;
+
+                    while (addingItems) {
+                        System.out.println(
+                                "Enter the ID of the product you are purchasing (or -1 if you want to exit the program)");
+                        int pId = scanner.nextInt();
+
+                        if (pId == -1) {
+                            addingItems = false;
+                            break;
+                        }
+
+                        System.out.println("How many units off " + pId + " do you need");
+                        int pQuantity = scanner.nextInt();
+
+                        Product match = null;
+                        for (Product p : warehouseManager.getProducts()) {
+                            if (p.getId() == pId) {
+                                match = p;
+                                break;
+                            }
+                        }
+
+                        if (match != null) {
+                            co.addProduct(match, pQuantity);
+                        } else {
+                            System.out.println("Product not found");
+                        }
+
+                    }
+                    warehouseManager.addCustomerOrder(co);
                     break;
+
+                case 6:
+                    System.out.println("Enter customer ID to process");
+                    int processId = scanner.nextInt();
+
+                    CustomerOrder orderProcess = null;
+                    for (CustomerOrder order : warehouseManager.getCustomerOrder()) {
+                        if (order.getId() == processId) {
+                            orderProcess = order;
+                            break;
+                        }
+                    }
+                    if (orderProcess != null) {
+                        warehouseManager.processCustomerOrder(orderProcess);
+                    } else {
+                        System.out.println("Customer order not found");
+                    }
+                    break;
+
                 default:
                     break;
             }
