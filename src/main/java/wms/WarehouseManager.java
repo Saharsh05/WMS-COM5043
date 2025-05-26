@@ -34,6 +34,10 @@ public class WarehouseManager {
         System.out.println("The product has been added");
     }
 
+    public List<Product> getProducts() {
+        return products;
+    }
+
     public void addSupplier(Supplier supplier) {
         if (supplier == null) {
             System.out.println("The supplier dosent exist");
@@ -49,6 +53,10 @@ public class WarehouseManager {
 
         suppliers.add(supplier);
         System.out.println("The supplier has been added");
+    }
+
+    public List<Supplier> getSuppliers() {
+        return suppliers;
     }
 
     public void createPurchaseOrder(int orderId, Supplier supplier, Product product, int quantity) {
