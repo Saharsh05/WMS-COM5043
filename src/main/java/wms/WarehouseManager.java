@@ -115,17 +115,18 @@ public class WarehouseManager {
             if (po.getId() == orderId) {
                 System.out.println("Order found. Proceeding to next processing steps");
                 orderFound = true;
-                if (po.getStatus().equals("Received")) {
+                if (po.getStatus().equalsIgnoreCase("Received")) {
                     System.out.println("This order has already been received");
                     return;
                 }
-                if (po.getStatus().equals("Pending")) {
+                if (po.getStatus().equalsIgnoreCase("Pending")) {
                     Product product = po.getProduct();
                     int quantity = po.getQuantity();
                     product.restock(quantity);
 
                     System.out.println("The product has been restocked");
                     po.setStatus("Received");
+                    System.out.println("Purchase order status updated to: " + po.getStatus());
 
                     return;
                 }

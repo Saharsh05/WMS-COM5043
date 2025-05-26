@@ -51,4 +51,13 @@ public class Product {
         return quantity <= lowStock;
     }
 
+    @Override
+    public String toString() {
+        return "Product [ID=" + id +
+                ", Name='" + name + '\'' +
+                ", Quantity=" + quantity +
+                ", Price=£" + String.format("%.2f", price) +
+                ", LowStockThreshold=" + lowStock + "]";
+    }
+
 }

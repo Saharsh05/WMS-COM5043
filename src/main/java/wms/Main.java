@@ -55,6 +55,7 @@ public class Main {
 
                     System.out.println("Enter the Id of the supplier");
                     int supplierId = scanner.nextInt();
+                    scanner.nextLine();
 
                     System.out.println("Add the contact information of the supplier");
                     String contact = scanner.nextLine();
@@ -93,7 +94,7 @@ public class Main {
                     }
 
                     if (foundSupplier != null && foundProduct != null) {
-                        warehouseManager.createPurchaseOrder(pid, foundSupplier, foundProduct, poQ);
+                        warehouseManager.createPurchaseOrder(poId, foundSupplier, foundProduct, poQ);
                     } else {
                         System.out.println("Invalid supplier or product ID");
                     }
@@ -143,6 +144,7 @@ public class Main {
 
                     }
                     warehouseManager.addCustomerOrder(co);
+                    System.out.println("Total order value: £" + co.calculateTotal());
                     break;
 
                 case 6:
@@ -158,16 +160,27 @@ public class Main {
                     }
                     if (orderProcess != null) {
                         warehouseManager.processCustomerOrder(orderProcess);
+                        System.out.println("Total order value: £" + orderProcess.calculateTotal());
                     } else {
                         System.out.println("Customer order not found");
                     }
                     break;
-
+                case 7:
+                    System.out.println("Products in Warehouse");
+                    for (Product p : warehouseManager.getProducts()) {
+                        System.out.println(p);
+                    }
+                    break;
+                case 8:
+                    System.out.println("Exiting system");
+                    running = false;
+                    break;
                 default:
+                    System.out.println("Invalid option");
                     break;
             }
         }
-
+        scanner.close();
     }
 
 }
