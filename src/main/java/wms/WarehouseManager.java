@@ -87,26 +87,30 @@ public class WarehouseManager {
     }
 
     public void receivePurchaseOrder(int orderId) {
+
+        boolean orderFound = false;
         for (PurchaseOrder po : purchases) {
             if (po.getId() == orderId) {
                 System.out.println("Order found. Proceeding to next processing steps");
+                orderFound = true;
                 if (po.getStatus().equals("Received")) {
                     System.out.println("This order has already been received");
                     return;
                 }
+                if (po.getStatus().equals("Pending")) {
+                    Product product = po.getProduct();
+                    int quantity = po.getQuantity();
+                    product.restock(quantity);
+
+                    System.out.println("The product has been restocked");
+                    po.setStatus("Received");
+
+                    return;
+                }
             }
-
-            if (po.getStatus().equals("Pending")) {
-                Product product = po.getProduct();
-                int quantity = po.getQuantity();
-                product.restock(quantity);
-
-                System.out.println("The product has been restocked");
-                po.setStatus("Received");
-            }
-
         }
-
-        System.out.println("No purchase found with order number:" + orderId);
+        if (!orderFound) {
+            System.out.println("No purchase found with order number:" + orderId);
+        }
     }
 }
