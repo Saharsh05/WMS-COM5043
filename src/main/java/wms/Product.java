@@ -27,6 +27,10 @@ public class Product {
         return quantity;
     }
 
+    public void setQuantity(int newQuantity) {
+        this.quantity = newQuantity;
+    }
+
     public double getPrice() {
         return price;
     }

@@ -1,17 +1,20 @@
 package wms;
 
 import java.util.List;
+import java.util.Map;
 import java.util.ArrayList;
 
 public class WarehouseManager {
     private List<Product> products;
     private List<Supplier> suppliers;
     private List<PurchaseOrder> purchases;
+    private List<CustomerOrder> customerOrders;
 
     public WarehouseManager() {
         products = new ArrayList<>();
         suppliers = new ArrayList<>();
         purchases = new ArrayList<>();
+        customerOrders = new ArrayList<>();
     }
 
     public void addProduct(Product product) {
@@ -112,5 +115,55 @@ public class WarehouseManager {
         if (!orderFound) {
             System.out.println("No purchase found with order number:" + orderId);
         }
+    }
+
+    public void processCustomerOrder(CustomerOrder order) {
+
+        if (order == null || order.getItems().isEmpty()) {
+            System.out.println("The order dosent exist or is null");
+
+            return;
+        }
+
+        for (Map.Entry<Product, Integer> entry : order.getItems().entrySet()) {
+            Product product = entry.getKey();
+            int quantityOrdered = entry.getValue();
+            boolean found = false;
+            for (Product p : products) {
+
+                if (p.getId() == product.getId()) {
+                    System.out.println("Found the products, carry on with next steps");
+                    found = true;
+                    if (quantityOrdered >= p.getQuantity()) {
+                        System.out.println("There is not enough stock of: " + order + " to complete your order");
+
+                        return;
+                    }
+                    break;
+                }
+            }
+            if (!found) {
+                System.out.println("Product not found in inventory: " + order);
+                return;
+            }
+        }
+
+        for (Map.Entry<Product, Integer> entry : order.getItems().entrySet()) {
+            Product product = entry.getKey();
+            int quantityOrdered = entry.getValue();
+
+            for (Product p : products) {
+                if (p.getId() == product.getId()) {
+
+                    p.setQuantity(p.getQuantity() - quantityOrdered);
+
+                    break;
+                }
+
+            }
+
+        }
+
+        customerOrders.add(order);
     }
 }
