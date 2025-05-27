@@ -9,12 +9,18 @@ public class WarehouseManager {
     private List<Supplier> suppliers;
     private List<PurchaseOrder> purchases;
     private List<CustomerOrder> customerOrders;
+    private FinancialReport financialReport;
 
     public WarehouseManager() {
         products = new ArrayList<>();
         suppliers = new ArrayList<>();
         purchases = new ArrayList<>();
         customerOrders = new ArrayList<>();
+        this.financialReport = new FinancialReport();
+    }
+
+    public FinancialReport getFinancialReport() {
+        return financialReport;
     }
 
     public void addProduct(Product product) {
@@ -127,6 +133,7 @@ public class WarehouseManager {
                     System.out.println("The product has been restocked");
                     po.setStatus("Received");
                     System.out.println("Purchase order status updated to: " + po.getStatus());
+                    financialReport.addExpense(po.calculateTotal());
 
                     return;
                 }
@@ -176,7 +183,6 @@ public class WarehouseManager {
                 if (p.getId() == product.getId()) {
 
                     p.setQuantity(p.getQuantity() - quantityOrdered);
-
                     break;
                 }
 
@@ -185,5 +191,6 @@ public class WarehouseManager {
         }
 
         customerOrders.add(order);
+        financialReport.addRevenue(order.calculateTotal());
     }
 }

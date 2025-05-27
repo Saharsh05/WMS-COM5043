@@ -20,7 +20,8 @@ public class Main {
             System.out.println("5. Create customer order");
             System.out.println("6. Process customer order");
             System.out.println("7. View products");
-            System.out.println("8. Exit");
+            System.out.println("8. View Finance Report");
+            System.out.println("9. Exit");
             System.out.print("Choose an option: ");
 
             int choice = scanner.nextInt();
@@ -172,6 +173,15 @@ public class Main {
                     }
                     break;
                 case 8:
+                    System.out.println("Financial Report:");
+                    System.out.println("Total revenue: £"
+                            + String.format("%.2f", warehouseManager.getFinancialReport().getTotalRevenue()));
+                    System.out.println("Total Expenses: £"
+                            + String.format("%.2f", warehouseManager.getFinancialReport().getTotalExpenses()));
+                    System.out.println("Net Income: £"
+                            + String.format("%.2f", warehouseManager.getFinancialReport().getNetIncome()));
+                    break;
+                case 9:
                     System.out.println("Exiting system");
                     running = false;
                     break;
