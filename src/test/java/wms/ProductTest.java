@@ -16,4 +16,16 @@ public class ProductTest {
         // Assert
         assertEquals(8, product.getQuantity());
     }
+
+      @Test
+    public void isLowStockTrue() {
+        Product product = new Product(102, "Apple", 2, 1.50, 5);
+        assertTrue(product.isLowStock());
+    }
+
+    @Test
+    public void isLowStockFalse() {
+        Product product = new Product(103, "Orange", 10, 1.20, 3);
+        assertFalse(product.isLowStock());
+    }
 }
