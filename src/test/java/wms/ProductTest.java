@@ -1,7 +1,12 @@
 package wms;
 
 import org.junit.jupiter.api.Test;
+
+import src.main.java.wms.Product;
+
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.beans.Transient;
 
 public class ProductTest {
 
@@ -27,5 +32,23 @@ public class ProductTest {
     public void isLowStockFalse() {
         Product product = new Product(103, "Orange", 10, 1.20, 3);
         assertFalse(product.isLowStock());
+    }
+
+    @Test
+    public void isQuantityValidated(){
+        Product product = new Product(104, "Brry", 10, 1, 6);
+
+        product.setQuantity(0);
+
+        assertNull(0, product.getQuantity());
+    }
+
+    @Test
+    public void setQuantityNegative(){
+        Product product = new Product(105, "Pear", 10, 1.35, 3);
+
+        product.setQuantity(-5);
+
+        assertEquals(10, product.getQuantity());
     }
 }
