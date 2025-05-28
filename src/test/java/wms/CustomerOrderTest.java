@@ -62,4 +62,15 @@ public class CustomerOrderTest {
         assertEquals(0.0, order.calculateTotal());
 
     }
+
+    @Test
+    public void addProductNullProduct(){
+        CustomerOrder order = new CustomerOrder(405);
+        Product product = new Product(406, "Snickers", 40, 3.00, 20);
+
+        order.addProduct(null, 10);
+
+        assertFalse(order.getItems().isEmpty());
+    }
+    
 }
