@@ -53,7 +53,7 @@ public class CustomerOrderTest {
 
     @Test
     public void addProductNegativeQuantity(){
-        src.main.java.wms.CustomerOrder order = new CustomerOrder(404);
+        CustomerOrder order = new CustomerOrder(404);
         Product product = new Product(405, "Maltesers", 30, 2.65, 10);
 
         order.addProduct(product, -5);
