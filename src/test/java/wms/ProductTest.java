@@ -49,5 +49,24 @@ public class ProductTest {
         product.setQuantity(-5);
 
         assertEquals(10, product.getQuantity());
+
     }
+
+     @Test
+    public void restockNegative() {
+        Product product = new Product(106, "Mango", 10, 2, 10);
+
+        product.restock(-5);  // Act
+
+        assertEquals(10, product.getQuantity());  // Assert
+    }
+
+    @Test 
+    
+    public void getPriceCorrect() {
+        Product product = new Product(107, "Guava", 20, 1.50, 10);
+
+        assertEquals(1.50, product.getPrice());
+    }
+
 }
