@@ -2,6 +2,7 @@ package wms;
 
 import org.junit.jupiter.api.Test;
 
+import src.main.java.wms.Product;
 import wms.CustomerOrder;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,5 +18,26 @@ public class CustomerOrderTest {
         order.addProduct(product, 5);
 
         assertEquals(5, order.getItems().get(product));
+    }
+
+    @Test
+    public void calculateTotalCorrectAmount(){
+        CustomerOrder order = new CustomerOrder(401);
+        Product product = new Product(202, "Hammer", 100, 10.00, 50);
+
+
+        order.addProduct(Product, 100);
+        assertEquals(1000.00, order.calculateTotal());
+
+    }
+
+    @Test
+    public void getItemsReturnsCorrect(){
+        src.main.java.wms.CustomerOrder order = new CustomerOrder(402);
+        Product product = new Product(203, "Screwdriver", 50, 5.00, 10);
+
+        order.addProduct(product, 25);
+
+        assertEquals(3, order.getItems().get(product));
     }
 }
