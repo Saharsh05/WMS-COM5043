@@ -76,10 +76,10 @@ public class ProductTest {
         Product product = new Product(108, "Dates", 30, 2.00, 10);
 
         assertEquals(108, product.getId());
-        assertEquals("Dates", product.getId());
-        assertEquals(30, product.getId());
-        assertEquals(2.00, product.getId());
-        assertEquals(10, product.getId());
+        assertTrue(product.getName().equalsIgnoreCase("dates"));
+        assertEquals(30, product.getQuantity());
+        assertEquals(2.00, product.getPrice());
+        assertEquals(10, product.getLowStock());
     }
 
 }
