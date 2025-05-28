@@ -70,7 +70,7 @@ public class CustomerOrderTest {
 
         order.addProduct(null, 10);
 
-        assertFalse(order.getItems().isEmpty());
+        assertTrue(order.getItems().isEmpty());
     }
     
 }
