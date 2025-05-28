@@ -40,4 +40,14 @@ public class CustomerOrderTest {
 
         assertEquals(25, order.getItems().get(product));
     }
+    
+    @Test
+    public void getTotalPriceCheck(){
+        CustomerOrder order = new CustomerOrder(403);
+        Product product = new Product(204, "KitKat", 25, 1.99, 5);
+
+        order.addProduct(product, 5);
+
+        assertEquals(9.95, order.getTotalPrice());
+    }
 }
