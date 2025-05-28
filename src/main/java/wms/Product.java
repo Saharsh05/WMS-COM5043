@@ -28,7 +28,12 @@ public class Product {
     }
 
     public void setQuantity(int newQuantity) {
+        if(newQuantity >= 0){
         this.quantity = newQuantity;
+        }
+        else{
+            System.out.println("Quantity cannot be negative");
+        }
     }
 
     public double getPrice() {
