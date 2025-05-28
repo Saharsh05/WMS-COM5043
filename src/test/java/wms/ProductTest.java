@@ -54,7 +54,7 @@ public class ProductTest {
 
      @Test
     public void restockNegative() {
-        Product product = new Product(106, "Mango", 10, 2, 10);
+        Product product = new Product(106, "Mango", 10, 2.00, 10);
 
         product.restock(-5);  // Act
 
@@ -67,6 +67,19 @@ public class ProductTest {
         Product product = new Product(107, "Guava", 20, 1.50, 10);
 
         assertEquals(1.50, product.getPrice());
+    }
+
+
+    @Test
+
+    public void checkGettersValues() {
+        Product product = new Product(108, "Dates", 30, 2.00, 10);
+
+        assertEquals(108, product.getId());
+        assertEquals("Dates", product.getId());
+        assertEquals(30, product.getId());
+        assertEquals(2.00, product.getId());
+        assertEquals(10, product.getId());
     }
 
 }
