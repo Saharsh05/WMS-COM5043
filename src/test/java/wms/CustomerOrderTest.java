@@ -50,4 +50,16 @@ public class CustomerOrderTest {
 
         assertEquals(9.95, order.getTotalPrice());
     }
+
+    @Test
+    public void addProductNegativeQuantity(){
+        src.main.java.wms.CustomerOrder order = new CustomerOrder(404);
+        Product product = new Product(405, "Maltesers", 30, 2.65, 10);
+
+        order.addProduct(product, -5);
+
+        assertFalse(order.getItems().containsKey(product));
+        assertEquals(0.0, order.calculateTotal());
+
+    }
 }
