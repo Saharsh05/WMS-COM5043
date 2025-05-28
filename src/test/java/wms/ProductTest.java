@@ -2,11 +2,10 @@ package wms;
 
 import org.junit.jupiter.api.Test;
 
-import src.main.java.wms.Product;
+import wms.Product;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.beans.Transient;
 
 public class ProductTest {
 
@@ -40,7 +39,7 @@ public class ProductTest {
 
         product.setQuantity(0);
 
-        assertNull(0, product.getQuantity());
+        assertEquals(0, product.getQuantity());
     }
 
     @Test
