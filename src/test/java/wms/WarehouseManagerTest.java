@@ -2,8 +2,7 @@ package wms;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-import src.main.java.wms.Product;
-import src.main.java.wms.WarehouseManager;
+import wms.WarehouseManager;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,7 +18,7 @@ public class WarehouseManagerTest {
         List<Product> storedProducts = wManager.getProducts();
 
         assertEquals(1, storedProducts.size());
-        assertEquals(product, storedProduct.get(0));
+        assertEquals(product, storedProducts.get(0));
     }
 
 
