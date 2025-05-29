@@ -39,6 +39,12 @@ public class PurchaseOrder extends Order {
 
     @Override
     public double calculateTotal() {
+
+        if(product == null || quantity < 0 || product.getPrice() < 0){
+            System.out.println("Warning: Invalid product, quantity or price");
+            return 0.0;
+        }
+
         return quantity * product.getPrice();
     }
 }
