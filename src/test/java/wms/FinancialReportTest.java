@@ -40,4 +40,22 @@ public class FinancialReportTest {
         assertEquals(0.0, fReport.getTotalExpenses());
     }
 
+    @Test
+    public test getNetIncomeCorrect(){
+        FinancialReport fReport = new FinancialReport();
+
+        fReport.addExpense(35);
+        fReport.addRevenue(70);
+
+        assertEquals(35, fReport.getNetIncome());
+    }
+    @Test
+    public void resetReportWorks(){
+        FinancialReport fReport = new FinancialReport();
+
+        fReport.addExpense(100);
+        fReport.addRevenue(20);
+
+
+    }
 }
