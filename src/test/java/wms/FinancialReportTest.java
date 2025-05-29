@@ -34,10 +34,10 @@ public class FinancialReportTest {
 
     @Test
     public void addExpenseNegativeAmount(){
-        src.main.java.wms.FinancialReport fReport = new FinancialReport();
-        freport.addExpense(-10);
+        FinancialReport fReport = new FinancialReport();
+        fReport.addExpense(-10);
 
-        assertEquals(0.0, fReport.getTotalExpense());
+        assertEquals(0.0, fReport.getTotalExpenses());
     }
 
 }
