@@ -5,8 +5,8 @@ public class FinancialReport {
     private double totalExpenses;
 
     public FinancialReport() {
-        this.totalExpenses = 0;
-        this.totalRevenue = 0;
+        this.totalExpenses = 0.0;
+        this.totalRevenue = 0.0;
     }
 
     public void addRevenue(double amount) {
