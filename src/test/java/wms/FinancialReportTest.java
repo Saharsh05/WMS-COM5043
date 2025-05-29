@@ -23,4 +23,21 @@ public class FinancialReportTest {
         fReport.addExpense(10.00);
         assertEquals(10, fReport.getTotalExpenses());
     }
+
+    @Test
+    public void addRevenueNegativeAmount(){
+        FinancialReport fReport = new FinancialReport();
+        fReport.addRevenue(-10);
+
+        assertEquals(0.0, fReport.getTotalRevenue());
+    }
+
+    @Test
+    public void addExpenseNegativeAmount(){
+        src.main.java.wms.FinancialReport fReport = new FinancialReport();
+        freport.addExpense(-10);
+
+        assertEquals(0.0, fReport.getTotalExpense());
+    }
+
 }
