@@ -41,7 +41,7 @@ public class FinancialReportTest {
     }
 
     @Test
-    public test getNetIncomeCorrect(){
+    public void getNetIncomeCorrect(){
         FinancialReport fReport = new FinancialReport();
 
         fReport.addExpense(35);
@@ -55,6 +55,11 @@ public class FinancialReportTest {
 
         fReport.addExpense(100);
         fReport.addRevenue(20);
+
+        fReport.resetReport();
+
+        assertEquals(0, fReport.getTotalExpenses());
+        assertEquals(0, fReport.getTotalRevenue());
 
 
     }
