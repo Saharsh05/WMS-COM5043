@@ -3,8 +3,6 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 
-
-
 import wms.WarehouseManager;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -221,4 +219,87 @@ public class WarehouseManagerTest {
         assertEquals(0, wManager.getPurchases().size());
         assertEquals(0.0, wManager.getFinancialReport().getTotalExpenses());
     }
+
+    @Test
+    public void processCustomerOrderUpdates(){
+        wms.WarehouseManager wManager = new WarehouseManager();
+        Product product = new Product(801, "Notebook", 50, 2.00, 10);
+        CustomerOrder order = new CustomerOrder(1001);
+        List<CustomerOrder> storedOrders = wManager.getCustomerOrder();
+        
+        wManager.addProduct(product);
+
+        order.addProduct(product, 10);
+
+        double expectedRevenue = 10 * 2;
+
+        int remainingStock = 50 - 10;
+
+        wManager.processCustomerOrder(order);
+
+        assertEquals(expectedRevenue, wManager.getFinancialReport().getTotalRevenue());
+        assertEquals(remainingStock, product.getQuantity());
+        assertEquals(1, storedOrders.size());
+        assertEquals(order, storedOrders.get(0));
+
+    }
+
+    @Test
+    public void processCustomerOrderNullOrder(){
+        WarehouseManager wManager = new WarehouseManager();
+        Product product = new Product(802, "Envelope", 45, 0.35, 10);
+        CustomerOrder order = null;
+        wManager.processCustomerOrder(order);
+        List<CustomerOrder> storedOrder = wManager.getCustomerOrder();
+
+        wManager.processCustomerOrder(order);
+        assertEquals(0, wManager.getFinancialReport().getTotalRevenue());
+        assertEquals(45, product.getQuantity());
+        assertEquals(0, storedOrder.size());
+    }
+
+    @Test
+    public void processCustomerOrderEmptyItems() {
+        WarehouseManager wManager = new WarehouseManager();
+
+        CustomerOrder order = new CustomerOrder(1002); 
+
+        wManager.processCustomerOrder(order);
+
+        assertEquals(0.0, wManager.getFinancialReport().getTotalRevenue(), 0.01);
+        assertEquals(0, wManager.getCustomerOrder().size());
+    }
+
+    @Test
+    public void processCustomerOrderProductNotFound() {
+        WarehouseManager wManager = new WarehouseManager();
+
+        Product externalProduct = new Product(803, "Stapler", 20, 3.50, 5); 
+        CustomerOrder order = new CustomerOrder(1003);
+        order.addProduct(externalProduct, 5); 
+
+        wManager.processCustomerOrder(order);
+
+        assertEquals(0.0, wManager.getFinancialReport().getTotalRevenue(), 0.01);
+        assertEquals(0, wManager.getCustomerOrder().size());
+    }
+
+    @Test
+    public void processCustomerOrderNotEnoughStock() {
+        WarehouseManager wManager = new WarehouseManager();
+
+        Product product = new Product(804, "Marker", 5, 1.00, 2); 
+        wManager.addProduct(product);
+
+        CustomerOrder order = new CustomerOrder(1004);
+        order.addProduct(product, 10); 
+
+        wManager.processCustomerOrder(order);
+
+        assertEquals(5, product.getQuantity());
+        assertEquals(0.0, wManager.getFinancialReport().getTotalRevenue(), 0.01);
+        assertEquals(0, wManager.getCustomerOrder().size());
+    }
+
+
 }
