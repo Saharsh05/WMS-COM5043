@@ -2,7 +2,6 @@ package wms;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-import src.main.java.wms.PurchaseOrder;
 import wms.WarehouseManager;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -132,7 +131,7 @@ public class WarehouseManagerTest {
 
     @Test
     public void createPurchaseOrderInvalidQuantity(){
-        src.main.java.wms.WarehouseManager wManager = new WarehouseManager();
+        WarehouseManager wManager = new WarehouseManager();
         Supplier supplier = new Supplier(803, "Sony", "Sony@gmail.com");
         Product product = new Product(603, "TV", 1000, 550, 200);
 
