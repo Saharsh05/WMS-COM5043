@@ -2,6 +2,7 @@ package wms;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
+import src.main.java.wms.Supplier;
 import wms.WarehouseManager;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -48,4 +49,43 @@ public class WarehouseManagerTest {
         assertEquals(product, storeProducts.get(0));
 
     }
+
+    @Test
+    public void addSupplierStoresNewSupplier(){
+
+        WarehouseManager wManager = new WarehouseManager();
+        Supplier supplier = new Supplier(704, "FruitCo", "FruitCo@email.com");
+
+        wManager.addSupplier(supplier);
+        List<Supplier> storeSuppliers = wManager.getSuppliers();
+
+        assertEquals(1, storeSuppliers.size());
+        assertEquals(supplier, storeSuppliers.get(0));
+    }
+
+    @Test
+    public void addSuppliersCheckNull(){
+        WarehouseManager wManager = new WarehouseManager();
+        Supplier supplier = new Supplier(705, "OrganicCo", "Organic@gmail.com");
+
+        wManager.addSupplier(null);
+        List<Supplier> storeSuppliers = wManager.getSuppliers();
+
+        assertEquals(0, storeSuppliers.size());
+    }
+
+    @Test
+    public void addSuppliersCheckSameID(){
+        WarehouseManager wManager = new WarehouseManager();
+        Supplier supplier = new Supplier(705, "Temu", "Temu@gmail.com");
+        Supplier supplier1 = new Supplier(705, "Temu", "Temu@gmail.com");
+
+        wManager.addSupplier(supplier);
+        wManager.addSupplier(supplier1);
+
+        List<Supplier> storeSuppliers = wManager.getSuppliers();
+
+        assertEquals(1, storeSuppliers.size());
+    }
+
 }
