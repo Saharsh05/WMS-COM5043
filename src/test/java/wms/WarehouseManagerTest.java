@@ -2,7 +2,6 @@ package wms;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-import src.main.java.wms.CustomerOrder;
 import wms.WarehouseManager;
 
 import static org.junit.jupiter.api.Assertions.*;
