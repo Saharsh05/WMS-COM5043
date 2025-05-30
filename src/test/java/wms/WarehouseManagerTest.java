@@ -2,12 +2,9 @@ package wms;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-<<<<<<< HEAD
-=======
-import src.main.java.wms.CustomerOrder;
-import src.main.java.wms.Product;
-import src.main.java.wms.PurchaseOrder;
->>>>>>> 9ce4aa0f6413f8dce8ce0a6f18620448d135eb48
+
+
+
 import wms.WarehouseManager;
 
 import static org.junit.jupiter.api.Assertions.*;
