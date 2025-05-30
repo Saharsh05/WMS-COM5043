@@ -2,6 +2,7 @@ package wms;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
+import src.main.java.wms.CustomerOrder;
 import wms.WarehouseManager;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -141,5 +142,24 @@ public class WarehouseManagerTest {
 
         List<PurchaseOrder> storeOrders = wManager.getPurchases();
         assertEquals(0, storeOrders.size());
+    }
+
+    @Test
+    public void addCustomerOrderWorks(){
+        WarehouseManager wManager = new WarehouseManager();
+        CustomerOrder cOrder = new CustomerOrder(303);
+        wManager.addCustomerOrder(cOrder);
+
+        List<CustomerOrder> storeCustomer = wManager.getCustomerOrder();
+        assertEquals(1, storeCustomer.size());
+    }
+
+    @Test
+    public void addCustomerOrderNull(){
+        WarehouseManager wManager = new WarehouseManager();
+        wManager.addCustomerOrder(null);
+
+        List<CustomerOrder> storeCustomer = wManager.getCustomerOrder();
+        assertEquals(0, storeCustomer.size());
     }
 }
