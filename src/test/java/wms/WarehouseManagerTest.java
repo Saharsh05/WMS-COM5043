@@ -2,6 +2,12 @@ package wms;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
+<<<<<<< HEAD
+=======
+import src.main.java.wms.CustomerOrder;
+import src.main.java.wms.Product;
+import src.main.java.wms.PurchaseOrder;
+>>>>>>> 9ce4aa0f6413f8dce8ce0a6f18620448d135eb48
 import wms.WarehouseManager;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -160,5 +166,62 @@ public class WarehouseManagerTest {
 
         List<CustomerOrder> storeCustomer = wManager.getCustomerOrder();
         assertEquals(0, storeCustomer.size());
+    }
+
+    @Test
+    public void receivePurchaseOrderUpdates(){
+        WarehouseManager wManager = new WarehouseManager();
+        Product product = new Product(602, "Compass", 100, 2.50, 25);
+        Supplier supplier = new Supplier(804, "MathsCo", "MatchCo@email.com");
+
+        wManager.addSupplier(supplier);
+        wManager.addProduct(product);
+        wManager.createPurchaseOrder(101, supplier, product, 10);
+        double expectedExpense = 10 * 2.50;
+        wManager.receivePurchaseOrder(101);
+        PurchaseOrder pOrder = wManager.getPurchases().get(0);
+        assertEquals(110, product.getQuantity());
+        assertEquals("Received", pOrder.getStatus());
+        assertEquals(expectedExpense, wManager.getFinancialReport().getTotalExpenses());
+    }
+
+    @Test
+    public void receivePurchaseOrderAlreadyReceived(){
+        WarehouseManager wManager = new WarehouseManager();
+        Product product = new Product(701, "Eraser", 50, 1.00, 10);
+        Supplier supplier = new Supplier(901, "StationeryCo", "supply@stationery.com");
+
+        wManager.addSupplier(supplier);
+        wManager.addProduct(product);
+
+        wManager.createPurchaseOrder(201, supplier, product, 20);
+
+        wManager.receivePurchaseOrder(201);
+
+        int firstQuantity = product.getQuantity();
+
+        double firstExpenses = wManager.getFinancialReport().getTotalExpenses();
+
+        wManager.receivePurchaseOrder(201);
+
+        assertEquals(firstQuantity, product.getQuantity());
+        assertEquals(firstExpenses, wManager.getFinancialReport().getTotalExpenses());
+ 
+    }
+
+    @Test
+    public void receivePurchaseOrderFailed(){
+        WarehouseManager wManager = new WarehouseManager();
+        Product product = new Product(702, "Calculator", 30, 15.00, 5);
+        Supplier supplier = new Supplier(902, "EduTech", "contact@edutech.com");
+
+        wManager.addSupplier(supplier);
+        wManager.addProduct(product);
+
+        wManager.receivePurchaseOrder(123);
+
+        assertEquals(30, product.getQuantity());
+        assertEquals(0, wManager.getPurchases().size());
+        assertEquals(0.0, wManager.getFinancialReport().getTotalExpenses());
     }
 }
