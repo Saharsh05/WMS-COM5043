@@ -65,6 +65,11 @@ public class WarehouseManager {
         return suppliers;
     }
 
+    public List<PurchaseOrder> getPurchases() {
+    return purchases;
+    }
+
+
     public void createPurchaseOrder(int orderId, Supplier supplier, Product product, int quantity) {
         if (supplier == null || product == null || quantity <= 0) {
             System.out.println("Invalid input: supplier/ product is null or quantity is invalid");

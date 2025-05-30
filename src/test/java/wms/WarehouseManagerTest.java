@@ -2,6 +2,7 @@ package wms;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
+import src.main.java.wms.PurchaseOrder;
 import wms.WarehouseManager;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -87,4 +88,59 @@ public class WarehouseManagerTest {
         assertEquals(1, storeSuppliers.size());
     }
 
+    @Test
+    public void createPurchaseOrderWorks(){
+        WarehouseManager wManager = new WarehouseManager();
+        Supplier supplier = new Supplier(705, "Temu", "Temu@gmail.com");
+        Product product = new Product(601, "Pencil", 10, 0.50, 2);
+        
+        wManager.addSupplier(supplier);
+        wManager.addProduct(product);
+        wManager.createPurchaseOrder(801, supplier, product, 5);
+
+        List<PurchaseOrder> storeOrders = wManager.getPurchases();
+
+        assertEquals(1, storeOrders.size());
+    }
+    
+    @Test
+    public void createPurchaseOrderNullSupplier(){
+        WarehouseManager wManager = new WarehouseManager();
+        Product product = new Product(602, "Book", 50, 9.50, 15);
+
+        
+        wManager.addProduct(product);
+        wManager.createPurchaseOrder(802, null, product, 10);
+
+        List<PurchaseOrder> storeOrders = wManager.getPurchases();
+
+        assertEquals(0, storeOrders.size());
+
+    }
+
+    @Test
+    public void createPurchaseOrderNullProduct() {
+        WarehouseManager wManager = new WarehouseManager();
+        Supplier supplier = new Supplier(706, "PaperCo", "paperco@email.com");
+
+        wManager.addSupplier(supplier);
+        wManager.createPurchaseOrder(803, supplier, null, 10); // product is null
+
+        List<PurchaseOrder> storeOrders = wManager.getPurchases();
+        assertEquals(0, storeOrders.size());
+    }
+
+    @Test
+    public void createPurchaseOrderInvalidQuantity(){
+        src.main.java.wms.WarehouseManager wManager = new WarehouseManager();
+        Supplier supplier = new Supplier(803, "Sony", "Sony@gmail.com");
+        Product product = new Product(603, "TV", 1000, 550, 200);
+
+        wManager.addSupplier(supplier);
+        wManager.addProduct(product);
+        wManager.createPurchaseOrder(202, supplier, product, -5);
+
+        List<PurchaseOrder> storeOrders = wManager.getPurchases();
+        assertEquals(0, storeOrders.size());
+    }
 }
