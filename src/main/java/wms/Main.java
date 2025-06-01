@@ -174,6 +174,11 @@ public class Main {
                     System.out.println("Products in Warehouse");
                     for (Product p : warehouseManager.getProducts()) {
                         System.out.println(p);
+                        if (p.isLowStock()) {
+                        System.out.println("LOW STOCK");
+                            } else {
+                            System.out.println();
+                        }
                     }
                     break;
                 case 8: 

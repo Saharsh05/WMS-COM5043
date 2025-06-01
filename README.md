@@ -5,7 +5,7 @@ A Java-based, menu-driven Warehouse Management System built as part of the COM50
 
 ---
 
-## 📦 Features
+## Features
 
 - **Product Management**: Add and view products with low stock alerts
 - **Supplier Management**: Add, view, and track supplier details and their order history
@@ -37,7 +37,15 @@ WMS-COM5043/
 ```
 
 ---
+## GitHub File Naming Issue (IMPORTANT: READ BEFORE RUNNING SYSTEM)
+```
+Note: GitHub may store Supplier.java as Supplier.Java (capital .J).
+This may cause errors like Supplier cannot be resolved to a type on case-sensitive systems.
 
+To fix: manually rename Supplier.Java to Supplier.java if necessary.
+```
+
+---
 ## How to Run the Application
 
 1. Clone or download the repository
