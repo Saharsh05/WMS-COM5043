@@ -1,2 +1,4 @@
 wms\FinancialReportTest.class
 wms\ProductTest.class
+wms\PurchaseOrderTest.class
+wms\CustomerOrderTest.class
