@@ -301,5 +301,49 @@ public class WarehouseManagerTest {
         assertEquals(0, wManager.getCustomerOrder().size());
     }
 
+    @Test
+    public void getSupplierByIdReturnsCorrectSupplier() {
+        WarehouseManager manager = new WarehouseManager();
+        Supplier supplier = new Supplier(101, "TestSupplier", "test@example.com");
+
+        manager.addSupplier(supplier);
+
+        Supplier result = manager.getSupplierById(101);
+
+        assertNotNull(result);
+        assertEquals(supplier, result);
+    }
+
+    @Test
+    public void printSupplierOrderHistoryPrintsCorrectly() {
+    
+        WarehouseManager manager = new WarehouseManager();
+        Supplier supplier = new Supplier(102, "PaperCo", "paperco@example.com");
+        Product product = new Product(301, "Notebook", 100, 2.50, 10);
+        PurchaseOrder order = new PurchaseOrder(201, supplier, product, 20);
+
+        supplier.addOrder(order);
+
+    
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+    
+        manager.printSupplierOrderHistory(supplier);
+
+    
+        System.setOut(System.out);
+
+    
+        String output = outContent.toString();
+        assertTrue(output.contains("Order history for: PaperCo"));
+        assertTrue(output.contains("PO ID: 201"));
+        assertTrue(output.contains("Notebook"));
+        assertTrue(output.contains("Quantity: 20"));
+        assertTrue(output.contains("Status: Pending"));
+    }
+
+
+
 
 }
