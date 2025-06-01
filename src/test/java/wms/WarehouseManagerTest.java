@@ -370,6 +370,30 @@ public class WarehouseManagerTest {
     assertEquals(0, manager.getSuppliers().size());
     }
 
+    @Test
+    public void processCustomerOrderTriggersLowStockWarning() {
+        // Arrange
+        WarehouseManager manager = new WarehouseManager();
+        Product product = new Product(101, "Notebook", 11, 1.50, 10); 
+        manager.addProduct(product);
+
+        CustomerOrder order = new CustomerOrder(201);
+        order.addProduct(product, 2);
+
+        
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        
+        manager.processCustomerOrder(order);
+
+        
+        System.setOut(System.out);
+
+        
+        String output = outContent.toString();
+        assertTrue(output.contains("Warning: Stock for product Notebook is now low (9 units remaining)."));
+    }
 
 
 

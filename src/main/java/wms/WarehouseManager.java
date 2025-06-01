@@ -197,7 +197,7 @@ public class WarehouseManager {
 
                     p.setQuantity(p.getQuantity() - quantityOrdered);
                     if (p.isLowStock()) {
-                    System.out.println(" Warning: Stock for product " + p.getName() + " is now low (" + p.getQuantity() + " units remaining).");
+                    System.out.println("Warning: Stock for product " + p.getName() + " is now low (" + p.getQuantity() + " units remaining).");
                     }
 
                     break;
