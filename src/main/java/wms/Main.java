@@ -23,7 +23,9 @@ public class Main {
             System.out.println("8. View suppliers");
             System.out.println("9. View supplier order history");
             System.out.println("10. View Finance Report");
-            System.out.println("11. Exit");
+            System.out.println("11. Update supplier");
+            System.out.println("12. Remove supplier");
+            System.out.println("13. Exit");
             System.out.print("Choose an option: ");
 
             int choice = scanner.nextInt();
@@ -207,6 +209,32 @@ public class Main {
                             + String.format("%.2f", warehouseManager.getFinancialReport().getNetIncome()));
                     break;
                 case 11:
+                    System.out.print("Enter supplier ID to update: ");
+                    int updateId = scanner.nextInt();
+                    scanner.nextLine(); 
+
+                    Supplier toUpdate = warehouseManager.getSupplierById(updateId);
+
+                    if (toUpdate != null) {
+                        System.out.print("Enter new name (or leave blank to keep current): ");
+                        String newName = scanner.nextLine();
+
+                        System.out.print("Enter new contact info (or leave blank to keep current): ");
+                        String newContact = scanner.nextLine();
+
+                        warehouseManager.updateSupplier(updateId, newName, newContact);
+                    } else {
+                        System.out.println("Supplier not found.");
+                    }
+                    break;
+                case 12:
+                    System.out.print("Enter supplier ID to remove: ");
+                    int removeId = scanner.nextInt();
+                    scanner.nextLine(); 
+
+                    warehouseManager.removeSupplier(removeId); 
+                    break;
+                case 13:
                     System.out.println("Exiting system");
                     running = false;
                     break;

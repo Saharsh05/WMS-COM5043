@@ -32,6 +32,17 @@ public class Supplier {
         return contactInfo;
     }
 
+    // Sets a different name for the supplier
+    public void setName(String name) {
+    this.name = name;
+    }
+
+    // Sets different contact information for the supplier
+    public void setContactInfo(String contactInfo) {
+    this.contactInfo = contactInfo;
+    }
+
+
     // Returns the full list of purchase orders associated with this supplier
     public ArrayList<PurchaseOrder> getOrderHistory() {
         return orderHistory;

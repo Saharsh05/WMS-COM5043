@@ -227,4 +227,42 @@ public class WarehouseManager {
                            ", Status: " + po.getStatus());
         }
     }   
+
+
+    public void removeSupplier(int id) {
+    Supplier toRemove = null;
+
+    for (Supplier s : suppliers) {
+        if (s.getId() == id) {
+            toRemove = s;
+            break;
+            }
+        }
+
+    if (toRemove != null) {
+        suppliers.remove(toRemove);
+        System.out.println("Supplier with ID " + id + " removed.");
+    } else {
+        System.out.println("Supplier not found.");
+        }
+    }
+    public void updateSupplier(int id, String newName, String newContactInfo) {
+    Supplier supplier = getSupplierById(id);
+
+    if (supplier != null) {
+        if (newName != null && !newName.isBlank()) {
+            // You can add a setName method if needed; or make name non-final
+            supplier.setName(newName);
+        }
+
+        if (newContactInfo != null && !newContactInfo.isBlank()) {
+            supplier.setContactInfo(newContactInfo);
+        }
+
+        System.out.println("Supplier updated successfully.");
+    } else {
+        System.out.println("Supplier not found.");
+        }
+    }
+
 }

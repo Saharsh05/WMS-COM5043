@@ -345,6 +345,32 @@ public class WarehouseManagerTest {
         assertTrue(output.contains("Status: Pending"));
     }
 
+    @Test
+        public void updateSupplierUpdates() {
+        WarehouseManager manager = new WarehouseManager();
+        Supplier supplier = new Supplier(1, "OldName", "old@email.com");
+
+        manager.addSupplier(supplier);
+        manager.updateSupplier(1, "NewName", "new@email.com");
+
+        Supplier updated = manager.getSupplierById(1);
+        assertEquals("NewName", updated.getName());
+        assertEquals("new@email.com", updated.getContactInfo());
+    }
+
+    @Test
+    public void removeSupplierDeletes() {
+    WarehouseManager manager = new WarehouseManager();
+    Supplier supplier = new Supplier(2, "DeleteMe", "deleteme@email.com");
+
+    manager.addSupplier(supplier);
+    manager.removeSupplier(2);
+
+    assertNull(manager.getSupplierById(2));
+    assertEquals(0, manager.getSuppliers().size());
+    }
+
+
 
 
 
