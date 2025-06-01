@@ -1,8 +1,0 @@
-wms\Main.class
-wms\PurchaseOrder.class
-wms\Supplier.class
-wms\WarehouseManager.class
-wms\CustomerOrder.class
-wms\Product.class
-wms\Order.class
-wms\FinancialReport.class
