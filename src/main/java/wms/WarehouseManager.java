@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
 
+// The WarehouseManager class coordinates the key business operations
+// including managing products, suppliers, orders, and financial tracking.
 public class WarehouseManager {
     private List<Product> products;
     private List<Supplier> suppliers;
@@ -23,6 +25,7 @@ public class WarehouseManager {
         return financialReport;
     }
 
+    // Adds a new product to the warehouse if it's not null and not a duplicate
     public void addProduct(Product product) {
         if (product == null) {
             System.out.println("The product dosent exist");
@@ -44,6 +47,7 @@ public class WarehouseManager {
         return products;
     }
 
+    // Adds a supplier if not null and not a duplicate
     public void addSupplier(Supplier supplier) {
         if (supplier == null) {
             System.out.println("The supplier dosent exist");
@@ -70,6 +74,7 @@ public class WarehouseManager {
     }
 
 
+    // Creates a purchase order if inputs are valid and references exist
     public void createPurchaseOrder(int orderId, Supplier supplier, Product product, int quantity) {
         if (supplier == null || product == null || quantity <= 0) {
             System.out.println("Invalid input: supplier/ product is null or quantity is invalid");
@@ -119,6 +124,7 @@ public class WarehouseManager {
         }
     }
 
+    // Processes a received purchase order if it exists and is pending
     public void receivePurchaseOrder(int orderId) {
 
         boolean orderFound = false;
@@ -149,6 +155,7 @@ public class WarehouseManager {
         }
     }
 
+    // Processes a customer order by checking stock and reducing quantities
     public void processCustomerOrder(CustomerOrder order) {
 
         if (order == null || order.getItems().isEmpty()) {
@@ -180,6 +187,7 @@ public class WarehouseManager {
             }
         }
 
+        // Reduce stock
         for (Map.Entry<Product, Integer> entry : order.getItems().entrySet()) {
             Product product = entry.getKey();
             int quantityOrdered = entry.getValue();
@@ -199,6 +207,7 @@ public class WarehouseManager {
         financialReport.addRevenue(order.calculateTotal());
     }
 
+    // Looks up a supplier by ID
     public Supplier getSupplierById(int id) {
         for (Supplier s : suppliers) {
         if (s.getId() == id) {
@@ -208,6 +217,7 @@ public class WarehouseManager {
     return null;
     }
 
+    // Prints the order history for a given supplier
     public void printSupplierOrderHistory(Supplier supplier) {
     System.out.println(" Order history for: " + supplier.getName());
     for (PurchaseOrder po : supplier.getOrderHistory()) {

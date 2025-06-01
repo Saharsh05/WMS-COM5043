@@ -6,6 +6,7 @@ import java.util.Map;
 
 // this class represents a customers order. it handles the data logic of what the customer buys. 
 public class CustomerOrder extends Order {
+    // Stores the products and their quantities in the order
     private Map<Product, Integer> items;
 
     public CustomerOrder(int id) {
@@ -13,10 +14,12 @@ public class CustomerOrder extends Order {
         this.items = new HashMap<>();
     }
 
+    // Returns the current items in the order.
     public Map<Product, Integer> getItems() {
         return items;
     }
 
+    // Adds a product to the order or increases its quantity if already present.
     public void addProduct(Product product, int quantity) {
         if (product == null || quantity <= 0) {
             System.out.println("Invalid product or quantity");
@@ -26,6 +29,7 @@ public class CustomerOrder extends Order {
         }
     }
 
+    // Calculates the total cost of the order by summing price * quantity for each product.
     @Override
     public double calculateTotal() {
         double total = 0.0;
@@ -41,6 +45,7 @@ public class CustomerOrder extends Order {
         return total;
     }
 
+    // Convenience method to get the total price.
     public double getTotalPrice() {
         return calculateTotal();
     }
