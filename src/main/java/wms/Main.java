@@ -20,8 +20,10 @@ public class Main {
             System.out.println("5. Create customer order");
             System.out.println("6. Process customer order");
             System.out.println("7. View products");
-            System.out.println("8. View Finance Report");
-            System.out.println("9. Exit");
+            System.out.println("8. View suppliers");
+            System.out.println("9. View supplier order history");
+            System.out.println("10. View Finance Report");
+            System.out.println("11. Exit");
             System.out.print("Choose an option: ");
 
             int choice = scanner.nextInt();
@@ -172,7 +174,30 @@ public class Main {
                         System.out.println(p);
                     }
                     break;
-                case 8:
+                case 8: 
+                    System.out.println(" Suppliers:");
+                     for (Supplier s : warehouseManager.getSuppliers()) {
+                        System.out.println(
+                        "ID: " + s.getId() +
+                        ", Name: " + s.getName() +
+                        ", Contact: " + s.getContactInfo() +
+                        ", Orders: " + s.getOrderHistory().size()
+                    );
+                     }
+                    break;
+                case 9:
+                     System.out.print("Enter supplier ID to view order history: ");
+                    int sID = scanner.nextInt();
+                    Supplier supplier1 = warehouseManager.getSupplierById(sID);
+
+                    if (supplier1 != null) {
+                    warehouseManager.printSupplierOrderHistory(supplier1);
+                    } else {
+                    System.out.println("Supplier not found.");
+                    }
+
+                    break;
+                case 10:
                     System.out.println("Financial Report:");
                     System.out.println("Total revenue: £"
                             + String.format("%.2f", warehouseManager.getFinancialReport().getTotalRevenue()));
@@ -181,7 +206,7 @@ public class Main {
                     System.out.println("Net Income: £"
                             + String.format("%.2f", warehouseManager.getFinancialReport().getNetIncome()));
                     break;
-                case 9:
+                case 11:
                     System.out.println("Exiting system");
                     running = false;
                     break;

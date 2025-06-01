@@ -198,4 +198,23 @@ public class WarehouseManager {
         customerOrders.add(order);
         financialReport.addRevenue(order.calculateTotal());
     }
+
+    public Supplier getSupplierById(int id) {
+        for (Supplier s : suppliers) {
+        if (s.getId() == id) {
+            return s;
+            }
+        }
+    return null;
+    }
+
+    public void printSupplierOrderHistory(Supplier supplier) {
+    System.out.println(" Order history for: " + supplier.getName());
+    for (PurchaseOrder po : supplier.getOrderHistory()) {
+        System.out.println("PO ID: " + po.getId() +
+                           ", Product: " + po.getProduct().getName() +
+                           ", Quantity: " + po.getQuantity() +
+                           ", Status: " + po.getStatus());
+        }
+    }   
 }
