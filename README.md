@@ -71,7 +71,7 @@ mvn test
 
 Expected output:
 ```
-Tests run: 46, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 42, Failures: 0, Errors: 0, Skipped: 0
 BUILD SUCCESS
 ```
 
@@ -100,10 +100,6 @@ All functionality was designed based on assignment requirements and tested for a
 
 ## Author
 
-Saharsh Didigam — BSc Software Engineering (Year 2)
+Saharsh Didigam — BSc Digital Technology and Solutions - Software Engineering (Year 2)
 
 ---
-
-## Feedback
-
-Feel free to report bugs or suggest improvements via GitHub Issues or email!

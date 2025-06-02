@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="wms.PurchaseOrderTest" time="0.015" tests="6" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="wms.OrderManagerTest" time="0.043" tests="5" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -60,10 +60,12 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="calculateTotalNegativeQuantity" classname="wms.PurchaseOrderTest" time="0.002"/>
-  <testcase name="calculateTotalNegativePrice" classname="wms.PurchaseOrderTest" time="0.001"/>
-  <testcase name="setStatusCorrectValue" classname="wms.PurchaseOrderTest" time="0.002"/>
-  <testcase name="getStatusCorrectValue" classname="wms.PurchaseOrderTest" time="0.0"/>
-  <testcase name="calculateTotalNull" classname="wms.PurchaseOrderTest" time="0.001"/>
-  <testcase name="calculateTotalTest" classname="wms.PurchaseOrderTest" time="0.002"/>
+  <testcase name="processCustomerOrderTriggersLowStockWarning" classname="wms.OrderManagerTest" time="0.031">
+    <system-out><![CDATA[The product has been added
+]]></system-out>
+  </testcase>
+  <testcase name="receivePurchaseOrderUpdates" classname="wms.OrderManagerTest" time="0.002"/>
+  <testcase name="createPurchaseOrderWorks" classname="wms.OrderManagerTest" time="0.003"/>
+  <testcase name="processCustomerOrderUpdatesStockAndRevenue" classname="wms.OrderManagerTest" time="0.002"/>
+  <testcase name="addCustomerOrderWorks" classname="wms.OrderManagerTest" time="0.001"/>
 </testsuite>
