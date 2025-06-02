@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="wms.FinancialReportTest" time="0.014" tests="6" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="wms.FinancialReportTest" time="0.023" tests="6" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -17,7 +17,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="GB"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-11.0.17\bin"/>
-    <property name="sun.java.command" value="C:\Users\44751\AppData\Local\Temp\surefire12578599669769503504\surefirebooter-20250601121731161_3.jar C:\Users\44751\AppData\Local\Temp\surefire12578599669769503504 2025-06-01T12-17-30_937-jvmRun1 surefire-20250601121731161_1tmp surefire_0-20250601121731161_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\44751\AppData\Local\Temp\surefire6831652708260300853\surefirebooter-20250601195319009_3.jar C:\Users\44751\AppData\Local\Temp\surefire6831652708260300853 2025-06-01T19-53-18_547-jvmRun1 surefire-20250601195319009_1tmp surefire_0-20250601195319009_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\44751\Desktop\Saharsh Uni\WMS-COM5043-2\target\test-classes;C:\Users\44751\Desktop\Saharsh Uni\WMS-COM5043-2\target\classes;C:\Users\44751\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.0\junit-jupiter-5.10.0.jar;C:\Users\44751\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.0\junit-jupiter-api-5.10.0.jar;C:\Users\44751\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\44751\.m2\repository\org\junit\platform\junit-platform-commons\1.10.0\junit-platform-commons-1.10.0.jar;C:\Users\44751\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\44751\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.0\junit-jupiter-params-5.10.0.jar;C:\Users\44751\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.0\junit-jupiter-engine-5.10.0.jar;C:\Users\44751\.m2\repository\org\junit\platform\junit-platform-engine\1.10.0\junit-platform-engine-1.10.0.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -33,7 +33,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\44751\AppData\Local\Temp\surefire12578599669769503504\surefirebooter-20250601121731161_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\44751\AppData\Local\Temp\surefire6831652708260300853\surefirebooter-20250601195319009_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="11.0.17+10-LTS-269"/>
@@ -60,7 +60,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="getNetIncomeCorrect" classname="wms.FinancialReportTest" time="0.006">
+  <testcase name="getNetIncomeCorrect" classname="wms.FinancialReportTest" time="0.009">
     <system-out><![CDATA[Expenses updated: £35.0
 Revenue updated: £70.0
 ]]></system-out>
@@ -69,20 +69,20 @@ Revenue updated: £70.0
     <system-out><![CDATA[The amount should be postive
 ]]></system-out>
   </testcase>
-  <testcase name="addRevenueNegativeAmount" classname="wms.FinancialReportTest" time="0.001">
+  <testcase name="addRevenueNegativeAmount" classname="wms.FinancialReportTest" time="0.0">
     <system-out><![CDATA[The revenue should be postive
 ]]></system-out>
   </testcase>
-  <testcase name="addRevenueIncreaesRevenue" classname="wms.FinancialReportTest" time="0.001">
+  <testcase name="addRevenueIncreaesRevenue" classname="wms.FinancialReportTest" time="0.0">
     <system-out><![CDATA[Revenue updated: £10.0
 ]]></system-out>
   </testcase>
-  <testcase name="resetReportWorks" classname="wms.FinancialReportTest" time="0.001">
+  <testcase name="resetReportWorks" classname="wms.FinancialReportTest" time="0.002">
     <system-out><![CDATA[Expenses updated: £100.0
 Revenue updated: £20.0
 ]]></system-out>
   </testcase>
-  <testcase name="addExpenseChangesTotalExpense" classname="wms.FinancialReportTest" time="0.0">
+  <testcase name="addExpenseChangesTotalExpense" classname="wms.FinancialReportTest" time="0.002">
     <system-out><![CDATA[Expenses updated: £10.0
 ]]></system-out>
   </testcase>

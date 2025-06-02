@@ -2,7 +2,7 @@ package wms;
 
 import org.junit.jupiter.api.Test;
 
-
+import java.util.List;
 import wms.InventoryManager;
 
 import static org.junit.jupiter.api.Assertions.*;
